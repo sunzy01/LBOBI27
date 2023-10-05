@@ -1,0 +1,85 @@
+---
+title: "RMarkdown CE#1"
+author: "Sophia Larcena"
+date: "2023-10-02"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# **ANALYSIS**
+
+
+```{r}
+setwd("C:/Users/HP/Documents/LBOBI27")
+library(ggplot2)
+df <- read.csv("C:\\Users\\HP\\Documents\\LBOBI27\\penguins new.csv")
+```
+
+With the 344 penguin observations in the dataset, several data analyses were done through statistics and graphical visualization. Using the summarizing verb in dplyr, the mean, minimum value, and maximum value of the numerical variables were extracted. Seen in Table 1 are evident appearances of the Gentoo species from Biscoe island, accounting for the largest bill length, the smallest bill depth, the largest flipper length, and the largest body mass. Based on this alone, it can be inferred that Gentoo penguins were able to feed and thrive. Following theories on evolution, these morphological characteristics can be used to describe their diet, feeding, competition, and migration. 
+
+##### **Table 1. Extracted summary statistics on penguin body measurements**
+```{r table}
+read.csv("C:\\Users\\HP\\Documents\\LBOBI27\\table.csv")
+```
+
+##### **Figure 3.  Bar graph of species distribution**
+```{r a, echo=TRUE}
+ggplot(data = df, aes(x = species)) + geom_bar(fill="lightblue") + labs(y = "Count", title= "Species Distribution") + facet_wrap(~island)
+```
+
+##### **Figure 4.  Bar graph of sex distribution**
+```{r b}
+ggplot(data = df, aes(x = sex)) + geom_bar(fill="deepskyblue") + labs(y = "Count", title= "Sex Distribution") + facet_wrap(~island)
+```
+
+Figures 3 and 4 are bar graphs representing species and sex distribution per island respectively. These graphs provide information of where the species populations stand. Torgersen is the only location where only one species, Adelie, inhabits it. However, Adelie penguins are seen throughout all three locations. This may suggest that Adelie penguins migrate more and are able to adapt to new environments. Gentoo are only seen in Biscoe while Chinstrap are only seen in Dream; these observations imply that both species were able to grow their populations despite the sightings being concentrated in certain areas. 
+
+Though Biscoe amasses the highest count of both females and males, all three locations show uniform distribution of sexes. This distribution can be attributed to a steady projection of the penguin populations, especially with penguins being monogamous animals. These come with population risks with the two locations (Torgersen and Dream) as an example. These locations are close together with Adelie penguins being seen in both locations while Chinstrap penguins are only seen in Dream. This may place Chinstrap penguins at risk in becoming a threatened species. 
+
+
+Figures 5 to Figure 12 are supplemental box plots to further illustrate the aforementioned statistics. Figures 5 to 8 show body measurements per species while Figures 9 to 12 show body measurements by island. 
+
+##### **Figure 5. Box plot for Bill Length by Island**
+```{r c}
+ggplot(df, aes(x = island, y = bill_length_mm)) + geom_boxplot(fill = "aquamarine") + labs(title = "Bill Length by Island", x = "Island", y = "Bill Length", ) + theme_minimal()
+```
+
+##### **Figure 6. Box plot for Bill Depth by Island**
+```{r d}
+ggplot(df, aes(x = island, y = bill_depth_mm)) + geom_boxplot(fill = "aquamarine") + labs(title = "Bill Depth by Island", x = "Island", y = "Bill Depth", ) + theme_minimal()
+```
+
+##### **Figure 7. Box plot for Flipper Length by Island**
+```{r e}
+ggplot(df, aes(x = island, y = flipper_length_mm)) + geom_boxplot(fill = "aquamarine") + labs(title = "Flipper Length by Island", x = "Island", y = "Flipper Length", ) + theme_minimal()
+```
+
+##### **Figure 8. Box plot for Body Mass by Island** 
+```{r f}
+ggplot(df, aes(x = island, y = body_mass_g)) + geom_boxplot(fill = "aquamarine") + labs(title = "Body Mass by Island", x = "Island", y = "Body Mass", ) + theme_minimal()
+```
+
+##### **Figure 9. Box plot Bill Length by Species**
+```{r g}
+ggplot(df, aes(x = species, y = bill_length_mm)) + geom_boxplot(fill = "cyan") + labs(title = "Bill Length by Species", x = "Species", y = "Bill Length") + theme_minimal()
+```
+
+##### **Figure 10. Box plot for Bill Depth by Species**
+```{r h}
+ggplot(df, aes(x = species, y = bill_depth_mm)) + geom_boxplot(fill = "cyan") + labs(title = "Bill Depth by Species", x = "Species", y = "Bill Depth") + theme_minimal()
+```
+
+##### **Figure 11. Box plot for Flipper Length by Species**
+```{r i}
+ggplot(df, aes(x = species, y = flipper_length_mm)) + geom_boxplot(fill = "cyan") + labs(title = "Flipper Length by Species", x = "Species", y = "Flipper Length") + theme_minimal()
+```
+
+##### **Figure 12. Box plot for Body Mass by Species**
+```{r j}
+ggplot(df, aes(x = species, y = body_mass_g)) + geom_boxplot(fill = "cyan") + labs(title = "Body Mass by Species", x = "Species", y = "Body Mass") + theme_minimal()
+```
+
+Penguins in particular have beaks or bills that are adept for grabbing or gleaning which help in their diet of fish and invertebrates that have developed through time (Navalón et al., 2019).  Chinstrap penguins are seen to have the longest beaks on average with Adelie penguins having the smallest beaks. Chinstrap and Gentoo overlap on this. Torgersen with predominantly Adelie penguins show the shortest beak depths. Bill depths show some opposites to their length counterpart. In relation to mechanical advantage, larger beak depths allow a stronger bite force while short beak depths can provide faster movement but with less of a force (Navalón et al., 2019). Penguins in Dream have the largest variance in beak length and high values for bill depth. 
+
+Adelie penguins possess short beaks but have large beak depths. This observation may have been helpful in their resiliency in different locations with other species as their beaks are less specialized for a certain diet. Penguins in Dream may offer a wide variety of available prey given that penguins of varying beak sizes are able to survive. It is important to note that clear overlaps will likely mean direct similarities in characteristics which affect competition for ecological survival. 
